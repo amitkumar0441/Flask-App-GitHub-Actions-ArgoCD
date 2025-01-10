@@ -1,20 +1,19 @@
+#Base image
 FROM python:3.14.0a3-alpine3.21
 
-# Set the working directory
+#Workingdirectory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+#Copy content from base to container
 COPY . . 
 
-# Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt
+#Install depedencies 
+RUN pip install -r requirements.txt 
 
-#Expose the port
+
+#Expose the Port
 EXPOSE 5000
 
-# Run app.py when the container launches
+#Run the python application
 CMD ["python", "app.py"]
-
-
-
 
