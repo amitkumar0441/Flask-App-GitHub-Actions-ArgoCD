@@ -22,7 +22,14 @@ pipeline {
                 }
             }
         }
-        stage('stage04- run the kubernetes deployment') {
+        stage('stage04- created the deployment01.yaml') {
+            steps {
+        sh """
+            sed -i 's|\\${IMAGE_TAG}|${BUILD_NUMBER}|g' deployment01.yaml
+        """
+            }
+        }
+        stage('stage05- Run the kubernetes deployment') {
             steps {
                 sh 'kubectl apply -f deployment01.yaml'
             }
