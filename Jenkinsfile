@@ -30,7 +30,7 @@ pipeline {
         stage('stage04-create the deployment01.yaml') {
             steps {
                 sh """
-                    sed -i "s|\${IMAGE_TAG}|${IMAGE_TAG}|g" deployment01.yaml
+                    sed -i "s|\\\${IMAGE_TAG}|${IMAGE_TAG}|g" deployment01.yaml
                 """
             }
         }
