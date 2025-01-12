@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh """
                     # Ensure IMAGE_TAG is correctly substituted with BUILD_NUMBER
-                    sed -i 's|\\${IMAGE_TAG}|${BUILD_NUMBER}|g' deployment01.yaml
+                    sed -i 's|\\\$\\{IMAGE_TAG\\}|${imageTag}|g' deployment01.yaml
                 """
             }
         }
