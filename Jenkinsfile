@@ -22,6 +22,7 @@ pipeline {
                         docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
                         docker push amitkumar0441/flask-githubactions-argocd:${IMAGE_TAG}
                         docker logout
+                        docker rmi amitkumar0441/flask-githubactions-argocd:${IMAGE_TAG}
                     """
                 }
             }
@@ -29,7 +30,7 @@ pipeline {
         stage('stage04-create the deployment01.yaml') {
             steps {
                 sh """
-                    sed -i 's|\\${IMAGE_TAG}|${IMAGE_TAG}|g' deployment01.yaml
+                    sed -i "s|\${IMAGE_TAG}|${IMAGE_TAG}|g" deployment01.yaml
                 """
             }
         }
