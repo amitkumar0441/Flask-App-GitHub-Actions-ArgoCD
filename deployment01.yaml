@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment01
+  labels:
+    name: deployment01
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flaskwebapp
+  template:
+    metadata:
+      labels:
+        app: flaskwebapp
+    spec:
+      containers:
+      - name: flaskcontainer
+        image: amitkumar0441/flask-githubactions-argocd:${IMAGE_TAG}
+        ports:
+        - containerPort: 5000
+
